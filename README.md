@@ -70,6 +70,33 @@ Sends a message to a specific authenticated user across all their connections.
 4. Set the **Event Name** (e.g., "private-message")
 5. Add the **Payload** as a JSON object (e.g., `{"message": "This is a private message"}`)
 
+## 🧹 Icon Display Issue in Local Installations
+
+In some **local or manual installations**, the icon for this custom node may not appear in the n8n interface.
+
+If this happens, follow these steps:
+
+1. Ensure that `icon.svg` is located in:
+   ```
+   <project-root>/dist/nodes/Pusher/icon.svg
+   ```
+2. Your node file (`Pusher.node.ts`) should include:
+   ```ts
+   icon: 'file:icon.svg'
+   ```
+3. Modify your `package.json` build script (for Windows):
+   ```json
+   "build": "tsc && copy src\\nodes\\Pusher\\icon.svg dist\\nodes\\Pusher\\icon.svg"
+   ```
+4. Run:
+   ```bash
+   npm run build
+   ```
+5. Restart your n8n instance completely.
+
+
+This will use a default icon and help confirm that your node is loading properly.
+
 ## Compatibility
 
 This node is compatible with n8n version 1.0.0 and later, and has been specifically tested with n8n version 1.85.4.
@@ -82,3 +109,4 @@ This node is compatible with n8n version 1.0.0 and later, and has been specifica
 ## License
 
 [MIT](LICENSE.md)
+

@@ -12,7 +12,7 @@
   "main": "dist/nodes/Pusher/Pusher.node.js",
   "types": "dist/nodes/Pusher/Pusher.node.d.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && copy src\\nodes\\Pusher\\icon.svg dist\\nodes\\Pusher\\icon.svg",
     "dev": "tsc --watch",
     "format": "prettier --write ."
   },
@@ -39,5 +39,10 @@
     "credentials": [
       "dist/credentials/PusherApi.credentials.js"
     ]
-  }
+  },
+  "files": [
+  "dist/",
+  "dist/nodes/Pusher/icon.svg"
+]
+
 }

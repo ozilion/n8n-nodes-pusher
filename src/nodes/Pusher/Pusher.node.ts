@@ -7,7 +7,7 @@ import {
 	NodeOperationError,
 } from 'n8n-workflow';
 
-// Pusher kütüphanesini farklı bir isimle import edelim
+// Pusher kütüphanesini import edelim
 import * as PusherLib from 'pusher';
 
 export class PusherNode implements INodeType {
@@ -18,7 +18,7 @@ export class PusherNode implements INodeType {
 		version: 1,
 		description: 'Send events and manage channels using Pusher API',
 		subtitle: '={{$parameter["operation"]}}',
-		icon: 'file:pusher.svg',
+		icon: 'file:icon.svg',
 		defaults: {
 			name: 'Pusher',
 		},
@@ -297,7 +297,7 @@ export class PusherNode implements INodeType {
 			appId: credentials.appId as string,
 			key: credentials.key as string,
 			secret: credentials.secret as string,
-			cluster: credentials.cluster as string || 'eu',
+			cluster: credentials.cluster as string || 'mt1',
 			useTLS: credentials.useTLS as boolean || true,
 		});
 

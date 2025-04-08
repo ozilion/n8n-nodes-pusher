@@ -25,7 +25,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Pusher = exports.PusherNode = void 0;
 const n8n_workflow_1 = require("n8n-workflow");
-// Pusher kütüphanesini farklı bir isimle import edelim
+// Pusher kütüphanesini import edelim
 const PusherLib = __importStar(require("pusher"));
 class PusherNode {
     constructor() {
@@ -36,7 +36,7 @@ class PusherNode {
             version: 1,
             description: 'Send events and manage channels using Pusher API',
             subtitle: '={{$parameter["operation"]}}',
-            icon: 'file:pusher.svg',
+            icon: 'file:icon.svg',
             defaults: {
                 name: 'Pusher',
             },
@@ -306,7 +306,7 @@ class PusherNode {
             appId: credentials.appId,
             key: credentials.key,
             secret: credentials.secret,
-            cluster: credentials.cluster || 'eu',
+            cluster: credentials.cluster || 'mt1',
             useTLS: credentials.useTLS || true,
         });
         for (let i = 0; i < items.length; i++) {

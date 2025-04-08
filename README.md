@@ -1,100 +1,83 @@
 # n8n-nodes-pusher
 
-This is an n8n community node for integrating with [Pusher](https://pusher.com), a real-time messaging service that enables developers to add live updates and notifications to their applications.
-
-[n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/reference/license/) workflow automation platform.
+This n8n community node allows you to integrate with [Pusher.com](https://pusher.com) services, providing real-time channels and messaging capabilities to your n8n workflows.
 
 ## Features
 
-This node allows you to:
+This node supports the following Pusher.com operations:
 
-- Trigger events on Pusher channels
-- Get channel information
-- List users in presence channels
+- **Trigger Event**: Send an event to a specific channel
+- **Trigger Batch**: Send multiple events in a single API call
+- **Get Channel Info**: Retrieve information about a specific channel
+- **Get Channels**: List all channels in your Pusher application
+- **Get Users**: List users in a presence channel
+- **Authenticate Channel**: Generate authentication for private or presence channels
+- **Authenticate User**: Generate authentication for users
+- **Terminate User Connections**: End all active connections for a user
+- **Send to User**: Send an event to a specific authenticated user
 
 ## Installation
 
-Follow these instructions to install this node:
+Follow these steps to install this custom node:
 
-### In n8n Desktop/Self-hosted:
+### Community Nodes (Recommended)
 
-1. Go to **Settings > Community Nodes**
-2. Click on **Install**
-3. Enter `n8n-nodes-pusher` in the "Enter npm package name" field
-4. Click on **Install**
+1. Open your n8n instance
+2. Go to **Settings > Community Nodes**
+3. Click on **Install**
+4. Enter `n8n-nodes-pusher` in the **Name** field
+5. Click **Install**
 
-### In Docker:
+### Manual Installation
 
+1. Navigate to your n8n installation directory
+2. Run the following command:
 ```bash
-docker run -it --rm \
-  --name n8n \
-  -p 5678:5678 \
-  -v ~/.n8n:/home/node/.n8n \
-  n8nio/n8n \
-  n8n start --tunnel
+npm install n8n-nodes-pusher
 ```
+3. Start n8n
 
-After installation, you can find the Pusher node in the node panel under "Integrations" or by searching for "Pusher".
+## Configuration
 
-## Credentials
+To use this node, you need to have a Pusher.com account and create an app there. Once you have your Pusher app, you'll need the following credentials:
 
-To use this node, you'll need a Pusher account and the following credentials:
+- **App ID**: Your Pusher App ID
+- **Key**: Your Pusher API Key
+- **Secret**: Your Pusher API Secret
+- **Cluster**: Your Pusher app's cluster (e.g., "eu", "us", "ap1")
 
-- **App ID**: Your Pusher application ID
-- **Key**: Your Pusher application key
-- **Secret**: Your Pusher application secret
-- **Cluster**: Your Pusher cluster (e.g., mt1, eu, ap1)
-
-You can find these details in your Pusher dashboard.
-
-## Node Reference
-
-### Operations
-
-1. **Trigger Event**
-   - Channel Name: The name of the channel to send the event to
-   - Event Name: The name of the event
-   - Payload: JSON data to send with the event
-
-2. **Get Channel Info**
-   - Channel Name: The name of the channel to get information about
-
-3. **List Presence Users**
-   - Channel Name: The name of the presence channel to get users from
+Add these credentials in the n8n **Credentials** section when creating a new Pusher API credential.
 
 ## Usage Examples
 
-### Sending a notification
+### Trigger an Event
 
-This workflow sends a notification to a Pusher channel when triggered.
+Sends a message to a Pusher channel that can be received by any client subscribed to that channel.
 
-1. Add a **Trigger** node (e.g., Manual Trigger)
-2. Connect a **Pusher** node
-3. Set operation to "Trigger Event"
-4. Set channel name (e.g., "notifications")
-5. Set event name (e.g., "new-notification")
-6. Set payload (e.g., `{"message": "Hello from n8n!"}`)
-7. Execute the workflow
+1. Add a Pusher node
+2. Select the **Trigger Event** operation
+3. Set the **Channel Name** (e.g., "my-channel")
+4. Set the **Event Name** (e.g., "my-event")
+5. Add the **Payload** as a JSON object (e.g., `{"message": "Hello from n8n!"}`)
 
-### Building a chat application
+### Send to Authenticated User
 
-This workflow fetches users in a presence channel for a chat application.
+Sends a message to a specific authenticated user across all their connections.
 
-1. Add a **Trigger** node (e.g., Webhook)
-2. Connect a **Pusher** node
-3. Set operation to "List Presence Users"
-4. Set channel name (e.g., "presence-chat")
-5. Connect a **Respond to Webhook** node to return the users
-6. Execute the workflow
+1. Add a Pusher node
+2. Select the **Send to User** operation
+3. Enter the **User ID** of the user you want to send to
+4. Set the **Event Name** (e.g., "private-message")
+5. Add the **Payload** as a JSON object (e.g., `{"message": "This is a private message"}`)
+
+## Compatibility
+
+This node is compatible with n8n version 1.0.0 and later, and has been specifically tested with n8n version 1.85.4.
 
 ## Resources
 
-- [Pusher Documentation](https://pusher.com/docs)
-- [n8n Documentation](https://docs.n8n.io/)
-
-## Version History
-
-- 1.0.3: Initial release
+- [Pusher.com Documentation](https://pusher.com/docs/)
+- [n8n Community Nodes Documentation](https://docs.n8n.io/integrations/community-nodes/)
 
 ## License
 

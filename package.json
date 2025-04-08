@@ -1,10 +1,10 @@
 {
   "name": "n8n-nodes-pusher",
-  "version": "1.0.4",
+  "version": "1.0.0",
   "description": "n8n community node for interacting with Pusher.com",
   "author": "Özcan Arslan <ozcanarslan@gmail.com>",
   "license": "MIT",
-  "keywords": ["n8n", "n8n-community-node-package", "n8n-nodes-pusher", "node", "pusher", "community", "realtime"],
+  "keywords": ["pusher", "n8n", "n8n-community-node-package", "n8n-nodes-pusher", "node", "community", "realtime", "notification"],
   "repository": {
     "type": "git",
     "url": "https://github.com/ozilion/n8n-nodes-pusher"
@@ -13,30 +13,26 @@
   "types": "dist/nodes/Pusher/Pusher.node.d.ts",
   "scripts": {
     "build": "tsc",
-    "watch": "tsc --watch"
+    "dev": "tsc --watch",
+    "format": "prettier --write ."
   },
   "dependencies": {
-    "@langchain/core": "^0.3.43",
-    "@n8n_io/riot-tmpl": "^4.0.1",
-    "@n8n/config": "^1.1.0",
-    "@sentry/node": "^9.11.0",
-    "express": "^5.1.0",
-    "luxon": "^3.6.1",
-    "n8n-core": "^1.14.1",
-    "n8n-workflow": "^1.82.0",
-    "nock": "^14.0.3",
-    "pusher": "^5.0.2",
-    "ssh2": "^1.16.0",
-    "tough-cookie": "^5.1.2"
+    "pusher": "^5.2.0"
   },
   "devDependencies": {
-    "@types/express": "^5.0.1",
-    "@types/luxon": "^3.6.2",
     "@types/node": "^20.0.0",
-    "@types/ssh2": "^1.15.5",
-    "typescript": "^5.3.0"
+    "n8n-workflow": "~1.82.0",
+    "prettier": "^3.2.5",
+    "typescript": "~5.3.0"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "^1.0.0"
+  },
+  "engines": {
+    "n8n": ">=1.0.0"
   },
   "n8n": {
+    "n8nNodesApiVersion": 1,
     "nodes": [
       "dist/nodes/Pusher/Pusher.node.js"
     ],

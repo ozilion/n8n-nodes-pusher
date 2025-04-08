@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-pusher",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "n8n community node for interacting with Pusher.com",
   "author": "Özcan Arslan <ozcanarslan@gmail.com>",
   "license": "MIT",
